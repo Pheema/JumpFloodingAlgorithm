@@ -270,6 +270,7 @@ MonoBehaviour:
   width: 128
   height: 128
   m_shader: {fileID: 4800000, guid: 5ebd3a9c3855dd44891630addd4f5532, type: 3}
+  testTex: {fileID: 2800000, guid: 9616da15568409a42a8cbfbb4bfb3a3e, type: 3}
 --- !u!4 &827450656
 Transform:
   m_ObjectHideFlags: 0

@@ -45,22 +45,16 @@
 		{
 			float4 col = tex2D(_MainTex, i.uv);
 			float4 val = float4(-1, -1, 1000000, 0);
-			if (any(col.rgb)) val = float4(i.uv, 0, 1);
+			//if (any(col.rgb)) val = float4(i.uv, 0, 1);
+			if (col.a > 0) val = float4(i.uv, 0, 1);
 			return val;
 		}
 
 		float4 frag_JFA(v2f i) : SV_Target
 		{
-			// i.uv += 0.5 * _VoronoiTex_TexelSize;
-			float2 d = (float2)_JumpSize * _VoronoiTex_TexelSize;
+			float d = _JumpSize;
 			
-			/*d = max(d, _VoronoiTex_TexelSize.x);
-			d /= _VoronoiTex_TexelSize;
-			d = ceil(d);
-			d *= _VoronoiTex_TexelSize;*/
-
 			float4 myInfo = tex2D(_VoronoiTex, i.uv);
-
 			for (int y = -1; y <= 1; y++)
 			{
 				for (int x = -1; x <= 1; x++)
@@ -82,7 +76,7 @@
 		float4 frag_show(v2f i) : SV_Target
 		{
 			float4 col = tex2D(_MainTex, i.uv);
-			return float4(0, 0, col.b * 3.0, 1);
+			return float4(0, 0, col.b * 5.0, 1);
 		}
 		ENDCG
 
